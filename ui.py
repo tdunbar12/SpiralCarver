@@ -11,10 +11,21 @@ from shared_spiral_carver import shared_data
 paused = False
 pause_condition = threading.Condition()
 
-
 def setup_ui(
-    root, motor1, motor2, run_sequence, stop_motors, toggle_pause, quit_program
+    root, run_sequence, stop_motors, toggle_pause, quit_program
 ):
+    """
+    Setup the user interface for the application.
+    """
+    # Access motors from shared_data
+    motor1 = shared_data.get("motor1")
+    motor2 = shared_data.get("motor2")
+
+    print(f"motor1: {motor1}, motor2: {motor2}")  # Debug: Check if motors are retrieved
+
+    # The rest of the setup_ui code...
+
+
     """
     Setup the user interface for the application.
     :param root: Tkinter root window

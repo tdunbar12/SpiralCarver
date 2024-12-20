@@ -40,10 +40,10 @@ def run_sequence():
 
         # Calculate Parameters
         center_lat = (start_lat + end_lat) / 2
-        latitude_rpm = calculate_longitude_rpm(desired_cutting_speed, center_lat, sphere_radius)
-        longitude_delay = calculate_longitude_delay(latitude_rpm)
-        rotation_time = 60 / latitude_rpm
-        latitude_delay = calculate_latitude_delay(rotation_time, rotations, start_lat, end_lat)
+        longitude_rpm = calculate_longitude_rpm(desired_cutting_speed, center_lat, sphere_radius)
+        longitude_delay = calculate_longitude_delay(longitude_rpm, steps_per_degree_longitude)
+        rotation_time = 60 / longitude_rpm
+        latitude_delay = calculate_latitude_delay(rotation_time, rotations, start_lat, end_lat, steps_per_degree_latitude)
 
         # Longitude Motor Thread
         threading.Thread(target=run_longitude, args=(longitude_delay,), daemon=True).start()
@@ -92,3 +92,4 @@ def quit_program():
     """
     global running
     running = False
+v
